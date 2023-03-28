@@ -1,0 +1,19 @@
+.btn {
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 10px;
+}
+
+.btn_solid {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+}
+
+.btn_transparent {
+  background-color: var(--white);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
