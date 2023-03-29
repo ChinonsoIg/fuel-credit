@@ -1,18 +1,16 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
+import AuthWrapper from '../components/AuthWrapper';
 import Navbar from '../components/Navbar';
 import "../index.css";
 import styles from "../assets/styles/Register.module.css";
-import close_icon from "../assets/images/close_icon.png";
 import person from "../assets/images/person.png";
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
-import AuthWrapper from '../components/AuthWrapper';
 
 
 const schema = yup.object({
@@ -46,11 +44,8 @@ const Register = () => {
       <Navbar />
       <AuthWrapper>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
-          <Link to="/" className={styles.close_form}>
-            <img src={close_icon} alt="close form" />
-          </Link>
           <div className={styles.form_icon_and_title}>
-            <img src={person} alt="close icon" />
+            <img src={person} alt="person icon" />
             <span className={styles.form_title}>Individual/Family</span>
           </div>
           <p className={styles.not_an_individual}>Not an Individual? <span className="text_primary_color">Choose another account type</span></p>

@@ -48,6 +48,12 @@ code {
   place-items: center;
 }
 
+.auth_wrapper .close_form {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+}
+
 
 
 /* // Large devices (desktops, less than 1200px) */
