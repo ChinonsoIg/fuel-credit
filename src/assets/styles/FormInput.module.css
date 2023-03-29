@@ -27,3 +27,8 @@
   border: none;
   outline: 0.5px solid var(--primary-color);
 }
+
+.form_errors {
+  color: var(--danger);
+  font-size: 14px;
+}

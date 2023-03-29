@@ -15,11 +15,15 @@ import Button from '../components/Button';
 
 
 const schema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string()
-    .required("Password is required")
-    .min(6, "Password length must be more than 6 characters")
-    .max(20, "Password length cannnot exceed 20 characters"),
+  firstName: yup.string().required("First name is required"),
+  lastName: yup.string().required("Last name is required"),
+  mobileNumber: yup.string()
+    .required("Phone number is required")
+    .min(11, "Phone number must be 11 digits")
+    .max(11, "Phone number must be 11 digits"),
+  nin: yup.string().notRequired(),
+  email: yup.string().email().required("Password is required"),
+  password: yup.string().required("Password is required")
 }).required();
 
 const Register = () => {
@@ -32,12 +36,16 @@ const Register = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
 
+  const onSubmit = (data) => {
+    console.log("data: ", data)
+  }
+
   return (
     <div>
       <Navbar />
       <div style={{ maxWidth: "1440px", padding: "0 50px" }}>
         <div className={styles.auth_wrapper}>
-          <div className={styles.auth_container}>
+          <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
           <Link to="/" className={styles.close_form}>
             <img src={close_icon} alt="close form" />
           </Link>
@@ -127,7 +135,7 @@ const Register = () => {
               value={!isBtnLoading ? "Sign in" : "Signing in..."}
             /> */}
             <Button title="Create my account" variant="solid" />
-        </div>
+        </form>
         
       </div>
     </div>
