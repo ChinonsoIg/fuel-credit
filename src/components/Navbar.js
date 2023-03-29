@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './../assets/styles/Navbar.module.css';
 import logo from '../assets/images/logo.png'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Button from './Button';
 
 const Navbar = () => {
@@ -47,8 +47,8 @@ const Navbar = () => {
             FAQs
           </NavLink>
           <div className={styles.auth_btn_container}>
-            <Button title="Log In" variant="transparent" />
-            <Button title="Create free account" variant="solid" />
+            <Link to="/login"><Button title="Log In" variant="transparent" /></Link>
+            <Link to="/register"><Button title="Create free account" variant="solid" /></Link>
           </div>
         </div>
       </div>

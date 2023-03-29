@@ -1,7 +1,7 @@
 .navbar {
   height: 91px;
   display: grid;
-  grid-template-columns: minmax(250px, 359px) minmax(1000px, 1081px);
+  grid-template-columns: minmax(239px, 359px) minmax(1000px, 1081px);
   grid-template-rows: auto;
   align-items: center;
 }
@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  padding-left: 3rem;
+  padding-left: 50px;
 }
 
 .logo img {
@@ -73,3 +73,54 @@
   text-decoration: underline;
   color: var(--gray);
 } */
+
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199px) {
+  .navbar {
+    height: 81px;
+    grid-template-columns: minmax(139px, 215px) minmax(711px, auto);
+  }
+  
+  .logo {
+    padding-left: 30px;
+  }
+  
+  .logo img {
+    max-width: 120px;
+  }
+  
+  .navbar_grid_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    color: var(--gray);
+  }
+  
+  .navbar_grid_container .navbar_grid_left {
+    gap: 25px;
+  }
+  
+  .navbar_grid_container .navbar_grid_right {
+    gap: 25px;
+  }
+  
+}
+
+
+
+/* TODO: Make navebar to dropdown */
+/* // Medium devices (tablets, less than 992px) */
+/* @media (max-width: 991.98px) {  } */
+
+
+
+/* // Small devices (landscape phones, less than 768px) */
+/* @media (max-width: 767.98px) {  } */
+
+
+
+/* // X-Small devices (portrait phones, less than 576px) */
+/* @media (max-width: 575.98px) {  } */
+

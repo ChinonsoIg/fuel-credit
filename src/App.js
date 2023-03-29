@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
+import Landing from "./pages/Landing";
 
 function App() {
 
@@ -10,9 +11,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />}>
-            <Route index element={<Login />} />
+          <Route path="/" element={<Landing />}>
+            <Route index element={<Landing />} />
           </Route>
+          <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
           <Route path="dashboard" element={<Dashboard />}></Route>
         </Routes>
