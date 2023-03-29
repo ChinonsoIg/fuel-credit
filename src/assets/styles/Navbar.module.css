@@ -1,7 +1,7 @@
 .navbar {
   height: 91px;
   display: grid;
-  grid-template-columns: minmax(239px, 359px) minmax(1000px, 1081px);
+  grid-template-columns: minmax(200px, 269px) minmax(1000px, 1081px);
   grid-template-rows: auto;
   align-items: center;
 }

@@ -4,6 +4,9 @@
   font-size: 16px;
   line-height: 20px;
   border-radius: 10px;
+
+  /* check if this width will work in all cases */
+  width: 100%; 
 }
 
 .btn_solid {

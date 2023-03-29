@@ -2,6 +2,9 @@
   --primary-color: #4FB518;
   --gray: #626762;
   --white: #ffffff;
+  --dark: #1F261E;
+  --auth-wrapper-bgcolor: #F9FAF9;
+  --border: #E0E6DD;
 }
 
 
@@ -21,4 +24,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.text_primary_color {
+  color: var(--primary-color);
 }
