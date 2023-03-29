@@ -30,3 +30,29 @@ code {
 .text_primary_color {
   color: var(--primary-color);
 }
+
+
+.auth_body {
+  max-width: 1440px;
+  padding: 0 50px;
+}
+
+.auth_wrapper {
+  width: 714px;
+  background-color: var(--auth-wrapper-bgcolor);
+  margin: 55px auto;
+  padding: 60px 0;
+  border-radius: 30px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1024px) { 
+  .auth_body {
+    padding: 0 30px;
+  }
+}

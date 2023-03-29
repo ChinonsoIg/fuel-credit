@@ -12,6 +12,7 @@ import close_icon from "../assets/images/close_icon.png";
 import person from "../assets/images/person.png";
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
+import AuthWrapper from '../components/AuthWrapper';
 
 
 const schema = yup.object({
@@ -43,9 +44,8 @@ const Register = () => {
   return (
     <div>
       <Navbar />
-      <div style={{ maxWidth: "1440px", padding: "0 50px" }}>
-        <div className={styles.auth_wrapper}>
-          <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
+      <AuthWrapper>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
           <Link to="/" className={styles.close_form}>
             <img src={close_icon} alt="close form" />
           </Link>
@@ -134,11 +134,9 @@ const Register = () => {
               className="{!isBtnLoading ? styles.login_btn : styles.login_btn_loading}"
               value={!isBtnLoading ? "Sign in" : "Signing in..."}
             /> */}
-            <Button title="Create my account" variant="solid" />
+          <Button title="Create my account" variant="solid" />
         </form>
-        
-      </div>
-    </div>
+      </AuthWrapper>
     </div>
   )
 }

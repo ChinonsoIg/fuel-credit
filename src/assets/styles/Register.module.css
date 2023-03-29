@@ -9,7 +9,7 @@
   place-items: center;
 }
 
-.auth_wrapper .auth_container {
+.auth_container {
   width: 100%;
   max-width: 365px;
 }
@@ -61,8 +61,8 @@
 }
 
 
-/* // Large devices (desktops, less than 1200px) */
-@media (max-width: 1199px) {
+/* // Large devices (desktops, less than 1024px) */
+@media (max-width: 1024px) {
   .auth_wrapper {
     width: 595px;
     background-color: var(--auth-wrapper-bgcolor);
