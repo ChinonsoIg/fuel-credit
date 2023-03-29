@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import styles from './../assets/styles/Navbar.module.css';
 import logo from '../assets/images/logo.png';
+import bell from '../assets/images/bell.png';
+import file from '../assets/images/file.png';
+import down_stroke from '../assets/images/down_stroke.png';
+import person_transparent from '../assets/images/person_transparent.png';
 import { Link, NavLink } from 'react-router-dom';
 import Button from './Button';
 
@@ -9,8 +13,16 @@ const Navbar = () => {
 
   if (isLoggedIn) {
     return (
-      <div>
-        <h4>Home navbar</h4>
+      <div className={styles.navbar_authed_user}>
+        <p className={styles.authed_user_title}>Home</p>
+        <div className={styles.flex_container_authed_user}>
+          <img src={file} alt="File icon" />
+          <img src={bell} alt="Bell icon" />
+          <div>
+            <img src={person_transparent} alt="Profile icon" />
+            <img src={down_stroke} alt="Down stroke icon" />
+          </div>
+        </div>
       </div>
     )
   };

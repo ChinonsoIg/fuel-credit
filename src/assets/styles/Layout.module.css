@@ -17,12 +17,12 @@
   border: 1px solid red;
 }
 
-
-
-
+.wrapper .main .contents {
+  padding: 0 49px;
+}
 
 
 /* // Large devices (desktops, less than 1024px) */
 @media (max-width: 1024px) {
-  
+
 }

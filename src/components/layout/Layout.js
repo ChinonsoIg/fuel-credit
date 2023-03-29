@@ -6,10 +6,14 @@ import styles from "../../assets/styles/Layout.module.css";
 const AuthLayout = ({ children }) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.sidebar}><Sidebar /></div>
+      <div className={styles.sidebar}>
+        <Sidebar />
+      </div>
       <main className={styles.main}>
         <Navbar />
-        {children}
+        <section className={styles.contents}>
+          {children}
+        </section>
       </main>
     </div>
   )
