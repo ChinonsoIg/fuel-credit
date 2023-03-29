@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import Landing from "./pages/Landing";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
 
@@ -11,12 +12,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />}>
+          <Route path="/" element={<Landing />} errorElement={<ErrorBoundary />}>
             <Route index element={<Landing />} />
           </Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
-          <Route path="dashboard" element={<Dashboard />}></Route>
+          <Route path="dashboard" element={<Dashboard />} errorElement={<ErrorBoundary />}></Route>
         </Routes>
       </BrowserRouter>
 
