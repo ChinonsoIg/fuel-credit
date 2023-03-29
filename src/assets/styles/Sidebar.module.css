@@ -97,6 +97,6 @@ padding-top: 30px;
 
 
 /* // Large devices (desktops, less than 1024px) */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
 
 }

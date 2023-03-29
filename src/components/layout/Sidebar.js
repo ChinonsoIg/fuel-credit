@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from '../../assets/styles/Sidebar.module.css';
 import logo from '../../assets/images/logo.png';
 import customer_support from '../../assets/images/customer_support.png';
-import { navItems } from '../../utils/navItems';
+import { navItems } from '../../utils/arrayItems';
 
 const Sidebar = () => {
   const location = useLocation();

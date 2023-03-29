@@ -11,9 +11,9 @@ const AuthLayout = ({ children }) => {
       </div>
       <main className={styles.main}>
         <Navbar />
-        <section className={styles.contents}>
+        <div className={styles.contents}>
           {children}
-        </section>
+        </div>
       </main>
     </div>
   )

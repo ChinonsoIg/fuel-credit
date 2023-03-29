@@ -1,0 +1,39 @@
+.grid_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 23px;
+  margin-top: 30px;
+}
+
+.grid_container .grid_item {
+  border-radius: 20px;
+  padding: 18px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  gap: 50px;
+  border: 1px solid var(--border);
+}
+
+.grid_container .grid_item > p {
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.grid_container .grid_item .name {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: var(--gray);
+}
+
+.grid_container .grid_item .value {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
+  color: var(--dark);
+}
