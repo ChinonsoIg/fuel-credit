@@ -12,12 +12,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />} errorElement={<ErrorBoundary />}>
+          <Route path="/" element={<Landing />}>
             <Route index element={<Landing />} />
           </Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="register" element={<Register />}></Route>
-          <Route path="dashboard" element={<Dashboard />} errorElement={<ErrorBoundary />}></Route>
+          <Route path="home" element={<Dashboard />}></Route>
+          <Route path="*" element={<ErrorBoundary />}></Route>
         </Routes>
       </BrowserRouter>
 

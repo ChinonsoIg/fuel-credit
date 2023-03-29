@@ -1,10 +1,21 @@
-import React from 'react'
+import { useState } from 'react';
 import styles from './../assets/styles/Navbar.module.css';
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/logo.png';
 import { Link, NavLink } from 'react-router-dom';
 import Button from './Button';
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  if (isLoggedIn) {
+    return (
+      <div>
+        <h4>Home navbar</h4>
+      </div>
+    )
+  };
+
+
   return (
     <div className={styles.navbar}>
       <NavLink to="/" className={styles.logo}>

@@ -1,0 +1,28 @@
+.wrapper {
+  position: relative;
+  /* border: 1px solid red; */
+}
+
+.wrapper .sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 359px;
+  height: 100%;
+  border-right: 1px solid var(--border);
+}
+
+.wrapper .main {
+  margin-left: 359px;
+  border: 1px solid red;
+}
+
+
+
+
+
+
+/* // Large devices (desktops, less than 1024px) */
+@media (max-width: 1024px) {
+  
+}
