@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -8,8 +7,9 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import AuthWrapper from '../components/AuthWrapper';
 import Navbar from '../components/Navbar';
 import "../index.css";
-import styles from "../assets/styles/Register.module.css";
-import person from "../assets/images/person.png";
+import styles from "../assets/styles/Auth.module.css";
+import verification_successful from "../assets/images/verification_successful.png";
+import login from "../assets/images/login.png";
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 
@@ -24,7 +24,7 @@ const schema = yup.object({
 
 const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isBtnLoading, setIsBtnLoading] = useState(false);
+  const [isFromReg, setIsFromReg] = useState(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
@@ -41,16 +41,31 @@ const Login = () => {
     <div>
       <Navbar />
       <AuthWrapper>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
-          <div className={styles.form_icon_and_title}>
-            <img src={person} alt="person icon" />
-            <span className={styles.form_title}>Individual/Family</span>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
+          <div className={styles.login_form_icon_and_title}>
+            {isFromReg && <>
+              <img src={verification_successful} alt="verification icon" />
+              <span className={styles.form_title}>
+                Verification successful!
+              </span>
+            </>
+            }
+            {!isFromReg && <>
+              <img src={login} alt="login icon" />
+              <span className={styles.form_title}>
+                Log in
+              </span>
+            </>
+            }
           </div>
-          <p className={styles.not_an_individual}>Not an Individual? <span className="text_primary_color">Choose another account type</span></p>
-          <div className={styles.form_input_container}>
+          {isFromReg && <p className={styles.registration_complete}>
+            Your registration is complete. Log in below to start enjoying easier and faster fuel purchases.
+          </p>}
+          {isFromReg && <p className={styles.login_post_registration}>Log in</p>}
+          <div className={styles.login_form_input_container}>
             <FormInput
               htmlFor="mobileNumber"
-              title="Phone Number"
+              title="Phone Number (User ID)"
               type="text"
               name="mobileNumber"
               placeholder="Enter 11-digit phone number"
@@ -58,7 +73,17 @@ const Login = () => {
               errors={errors.mobileNumber?.message}
             />
             <div className={styles.password_container}>
-              <div className="">
+              <div>
+                <span
+                  style={{
+                    color: "#4FB518",
+                    position: "absolute",
+                    top: "0px",
+                    right: "0px",
+                  }}
+                >
+                  Forgot password?
+                </span>
                 <FormInput
                   htmlFor="password"
                   title="Password"
@@ -80,18 +105,9 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <p className={styles.terms_and_policy}>
-            By creating an account you agree to our
-            <span className="text_primary_color">{" "}Terms of Use</span>{" "} and {" "}
-            <span className="text_primary_color">Privacy Policy</span>.
-          </p>
-          {/* <input
-              type="submit"
-              // role="button"
-              className="{!isBtnLoading ? styles.login_btn : styles.login_btn_loading}"
-              value={!isBtnLoading ? "Sign in" : "Signing in..."}
-            /> */}
-          <Button title="Create my account" variant="solid" />
+          <Button title="Log in" variant="solid" height="55px" />
+          {isFromReg && <p className={styles.forgot_password_post_registration}>Forgot password?</p>}
+          {!isFromReg && <p className={styles.if_new_user}>New user? <span className="text_primary_color">Create account</span></p>}
         </form>
       </AuthWrapper>
     </div>

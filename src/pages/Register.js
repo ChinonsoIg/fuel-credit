@@ -7,7 +7,7 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import AuthWrapper from '../components/AuthWrapper';
 import Navbar from '../components/Navbar';
 import "../index.css";
-import styles from "../assets/styles/Register.module.css";
+import styles from "../assets/styles/Auth.module.css";
 import person from "../assets/images/person.png";
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
@@ -123,13 +123,7 @@ const Register = () => {
             <span className="text_primary_color">{" "}Terms of Use</span>{" "} and {" "}
             <span className="text_primary_color">Privacy Policy</span>.
           </p>
-          {/* <input
-              type="submit"
-              // role="button"
-              className="{!isBtnLoading ? styles.login_btn : styles.login_btn_loading}"
-              value={!isBtnLoading ? "Sign in" : "Signing in..."}
-            /> */}
-          <Button title="Create my account" variant="solid" />
+          <Button title="Create my account" variant="solid" height="55px" />
         </form>
       </AuthWrapper>
     </div>

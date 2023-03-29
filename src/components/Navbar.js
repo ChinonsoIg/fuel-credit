@@ -47,8 +47,8 @@ const Navbar = () => {
             FAQs
           </NavLink>
           <div className={styles.auth_btn_container}>
-            <Link to="/login"><Button title="Log In" variant="transparent" /></Link>
-            <Link to="/register"><Button title="Create free account" variant="solid" /></Link>
+            <Link to="/login"><Button title="Log In" variant="transparent" height="45px" /></Link>
+            <Link to="/register"><Button title="Create free account" variant="solid" height="45px" /></Link>
           </div>
         </div>
       </div>
