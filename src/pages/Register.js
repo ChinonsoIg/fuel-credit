@@ -1,17 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
-import AuthWrapper from '../components/AuthWrapper';
-import Navbar from '../components/Navbar';
 import "../index.css";
 import styles from "../assets/styles/Auth.module.css";
 import person from "../assets/images/person.png";
-import FormInput from '../components/FormInput';
-import Button from '../components/Button';
 
+import AuthWrapper from "../components/AuthWrapper";
+import Navbar from "../components/Navbar";
+import FormInput from "../components/FormInput";
+import Button from "../components/Button";
 
 const schema = yup.object({
   firstName: yup.string().required("First name is required"),
@@ -25,9 +26,13 @@ const schema = yup.object({
   password: yup.string().required("Password is required")
 }).required();
 
+
 const Register = () => {
+  const [errMsg, setErrMsg] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isBtnLoading, setIsBtnLoading] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
@@ -35,9 +40,39 @@ const Register = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
 
-  const onSubmit = (data) => {
-    console.log("data: ", data)
+  const onSubmit = async (data) => {
+    console.log(data)
+
+    navigate("/login", { state: { from: location } });
+
+    // try {
+    //   const response = await fetch("http://dev.myfuelcredit.com/api/v1/register", data);
+    //   const data = await response.json();
+    //   navigate("/login");
+
+    //   return data;
+
+    // } catch (err) {
+    //   console.log("err: ", err)
+    //   if (!err?.originalStatus) {
+    //     setErrMsg("No Server Response");
+    //   } else if (err.originalStatus === 400) {
+    //     setErrMsg("Missing User ID or Password");
+    //   } else if (err.originalStatus === 401) {
+    //     setErrMsg("Unauthorized");
+    //   } else {
+    //     setErrMsg("Login Failed");
+    //   }
+    // }
+
   }
+
+
+
+
+  useEffect(() => {
+    setErrMsg("")
+  }, [])
 
   return (
     <div>

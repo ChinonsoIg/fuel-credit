@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import Landing from "./pages/Landing";
 import ErrorBoundary from "./components/ErrorBoundary";
+import RequireAuth from "./features/auth/RequireAuth";
 
 function App() {
 
@@ -12,13 +13,16 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />}>
+          <Route>
             <Route index element={<Landing />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
           </Route>
-          <Route path="login" element={<Login />}></Route>
-          <Route path="register" element={<Register />}></Route>
-          <Route path="home" element={<Dashboard />}></Route>
-          <Route path="*" element={<ErrorBoundary />}></Route>
+
+          <Route element={<RequireAuth />} >
+            <Route path="home" element={<Dashboard />} />
+            <Route path="*" element={<ErrorBoundary />} />
+          </Route>
         </Routes>
       </BrowserRouter>
 

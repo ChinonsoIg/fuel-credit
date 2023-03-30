@@ -37,3 +37,15 @@
   line-height: 42px;
   color: var(--dark);
 }
+
+
+
+
+/* // Large devices (desktops, less than 1024px) */
+@media screen and (max-width: 1024px) {
+  /* .grid_container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  } */
+  
+}

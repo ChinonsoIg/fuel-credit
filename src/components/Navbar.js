@@ -9,7 +9,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Button from './Button';
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   if (isLoggedIn) {
     return (
