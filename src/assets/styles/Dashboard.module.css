@@ -17,7 +17,7 @@
   border: 1px solid var(--border);
 }
 
-.grid_container .grid_item > p {
+.grid_container .grid_item>p {
   justify-self: flex-end;
   display: flex;
   flex-direction: column;
@@ -38,14 +38,209 @@
   color: var(--dark);
 }
 
+.wallet_and_credit_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin: 50px 0;
+  gap: 24px;
+}
+
+.wallet_and_credit_wrapper .wallet_wrapper .wallet_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.wallet_wrapper .wallet_header .wallet {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 29px;
+  color: var(--dark);
+}
+
+.wallet_wrapper .wallet_header .details {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--green-dark);
+}
+
+.wallet_wrapper .wallet_container {
+  background-color: var(--bg-gray);
+  border-radius: 20px;
+  padding: 30px 35px;
+}
+
+.wallet_wrapper .wallet_container .balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wallet_wrapper .wallet_container .balance .toggle_balance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-gray);
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+  align-self: center;
+}
+
+.wallet_wrapper .wallet_container .balance .amount {
+  color: var(--dark);
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 500;
+}
+
+.wallet_wrapper .wallet_container .recent_transactions,
+.wallet_wrapper .wallet_container .total_filling_station {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wallet_wrapper .wallet_container .recent_transactions .recent {
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.wallet_wrapper .wallet_container .recent_transactions .see_all_recent_transaction {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+  color: var(--green-dark);
+}
+
+.wallet_wrapper .wallet_container .total_filling_station p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.wallet_container .total_filling_station .total {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--dark);
+}
+
+.wallet_container .total_filling_station .today {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--text-gray);
+}
+
+.wallet_container .total_filling_station .amt_filling_station {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--dark);
+}
+
+
+
+.wallet_and_credit_wrapper .credit_wrapper .credit_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.credit_wrapper .credit_header .credit {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 29px;
+  color: var(--dark);
+}
+
+.credit_wrapper .credit_header .credit_details {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--green-dark);
+}
+
+.wallet_and_credit_wrapper .credit_container {
+  background-color: var(--bg-gray);
+  border-radius: 20px;
+  padding: 30px 35px;
+}
+
+.wallet_and_credit_wrapper .credit_container .toggle_credit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-gray);
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
+  align-self: center;
+}
+
+.wallet_and_credit_wrapper .credit_container .credit_balance {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 42px;
+  color: var(--dark);
+}
+
+.wallet_and_credit_wrapper .credit_container .request_amount {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: var(--text-gray);
+}
+
+.wallet_and_credit_wrapper .credit_container .request_amount > span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  color: var(--dark);
+}
+
+.wallet_and_credit_wrapper .credit_container .make_request {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 27px;
+}
+
 
 
 
 /* // Large devices (desktops, less than 1024px) */
 @media screen and (max-width: 1024px) {
-  /* .grid_container {
+  .grid_container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-  } */
-  
+  }
+
+  .wallet_and_credit_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 50px 0;
+    gap: 24px;
+  }
+}
+
+
+
+/* // Large devices (desktops, less than 1024px) */
+@media screen and (max-width: 768px) {
+  .grid_container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+
+
+
 }

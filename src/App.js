@@ -18,12 +18,15 @@ function App() {
             <Route index element={<Landing />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+
+            <Route path="home" element={<Dashboard />} />
+            
             <Route path="*" element={<ErrorBoundary />} />
           </Route>
 
           {/* Private routes */}
           <Route element={<RequireAuth />} >
-            <Route path="home" element={<Dashboard />} />
+            {/* <Route path="home" element={<Dashboard />} /> */}
             <Route path="*" element={<ErrorBoundary />} />
           </Route>
         </Routes>

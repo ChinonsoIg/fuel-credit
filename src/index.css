@@ -8,6 +8,8 @@
   --auth-wrapper-bgcolor: #F9FAF9;
   --border: #E0E6DD;
   --danger: #b30000;
+  --bg-gray: #FAFAFA;
+  --text-gray:  #8F928E;
 }
 
 
@@ -19,7 +21,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--white);
-  max-width: 1440px;
 }
 
 .App {
