@@ -55,6 +55,7 @@ const LoginPage = () => {
       navigate("/home");
     
     } catch (err) {
+      console.log("err: ", err)
       if (!err?.originalStatus) {
         setErrMsg("No Server Response");
       } else if (err.originalStatus === 400) {
