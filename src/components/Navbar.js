@@ -11,8 +11,7 @@ import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
 
 const Navbar = () => {
-  // const user = useSelector(selectCurrentUser);
-  const user = "null"
+  const user = useSelector(selectCurrentUser);
 
 
   if (user) {
