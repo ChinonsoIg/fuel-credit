@@ -14,7 +14,7 @@ const Dashboard = () => {
 
             return (
               <div key={id} className={styles.grid_item}>
-                <img src={icon} />
+                <img src={icon} alt={name} />
                 <p>
                   <span className={styles.name}>{name}</span>
                   <span className={styles.value}>{value}</span>

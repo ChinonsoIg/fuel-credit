@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,10 +9,14 @@ import "../index.css";
 import styles from "../assets/styles/Auth.module.css";
 import person from "../assets/images/person.png";
 
+import firebase from "../firebase";
 import AuthWrapper from "../components/AuthWrapper";
 import Navbar from "../components/Navbar";
 import FormInput from "../components/FormInput";
 import Button from "../components/Button";
+import axios from "axios";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const schema = yup.object({
   firstName: yup.string().required("First name is required"),
@@ -31,6 +35,7 @@ const Register = () => {
   const [errMsg, setErrMsg] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isBtnLoading, setIsBtnLoading] = useState(false);
+  const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -40,44 +45,76 @@ const Register = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
 
+  const handleOTP = (arg) => {
+    const number = arg.slice(1);
+    const numberWithCode = "+234" + number;
+    const recaptcha = window.recaptchaVerifier;
+
+    firebase.auth().signInWithPhoneNumber(numberWithCode, recaptcha).then(function (e) {
+      let code = prompt("Enter otp sent to you", "");
+      if (code == null) return;
+      e.confirm(code).then(function (result) {
+        console.log("user", result.user.phoneNumber);
+        setTimeout(() => {
+          navigate("/login", { state: { from: location } });
+        }, 5000);
+
+      }).catch((err) => {
+        console.log("er: ", err)
+      })
+    })
+  }
+
   const onSubmit = async (data) => {
-    console.log(data)
+    setIsBtnLoading(true);
+    data.category = "Others";
 
-    navigate("/login", { state: { from: location } });
+    try {
+      const response = await axios.post(`${API_URL}/register`, data);
 
-    // try {
-    //   const response = await fetch("http://dev.myfuelcredit.com/api/v1/register", data);
-    //   const data = await response.json();
-    //   navigate("/login");
+      if (response.status === 201) {
+          handleOTP(data.mobileNumber);
+          setIsBtnLoading(false)
 
-    //   return data;
+      } else {
+        setErrMsg("Registration Failed");
+      }
 
-    // } catch (err) {
-    //   console.log("err: ", err)
-    //   if (!err?.originalStatus) {
-    //     setErrMsg("No Server Response");
-    //   } else if (err.originalStatus === 400) {
-    //     setErrMsg("Missing User ID or Password");
-    //   } else if (err.originalStatus === 401) {
-    //     setErrMsg("Unauthorized");
-    //   } else {
-    //     setErrMsg("Login Failed");
-    //   }
-    // }
+    } catch (error) {
+      if (error?.response?.data?.errors?.mobileNumber) {
+        setErrMsg(error?.response?.data?.errors?.mobileNumber?.[0]);
+      } else if (error?.response?.data?.errors?.firstName) {
+        setErrMsg(error?.response?.data?.errors?.firstName?.[0]);
+      } else if (error?.response?.data?.errors?.lastName) {
+        setErrMsg(error?.response?.data?.errors?.lastName?.[0]);
+      } else if (error?.response?.data?.errors?.email) {
+        setErrMsg(error?.response?.data?.errors?.email?.[0]);
+      } else if (error?.response?.data?.errors?.password) {
+        setErrMsg(error?.response?.data?.errors?.password?.[0]);
+      } else {
+        setErrMsg("Registration Failed");
+      }
+
+      setIsBtnLoading(false);
+    }
 
   }
 
-
-
-
   useEffect(() => {
-    setErrMsg("")
+    setErrMsg("");
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier("recaptcha-container",
+      {
+        size: "invisible"
+      });
   }, [])
+
 
   return (
     <div>
       <Navbar />
+      <span id="recaptcha-container"></span>
       <AuthWrapper>
+        <p ref={errRef} style={{ color: "red" }} aria-live="assertive">{errMsg}</p>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
           <div className={styles.form_icon_and_title}>
             <img src={person} alt="person icon" />
@@ -158,7 +195,12 @@ const Register = () => {
             <span className="text_primary_color">{" "}Terms of Use</span>{" "} and {" "}
             <span className="text_primary_color">Privacy Policy</span>.
           </p>
-          <Button title="Create my account" variant="solid" height="55px" />
+          <Button
+            title={isBtnLoading ? "Creating account..." : "Create my account"}
+            variant="solid"
+            height="55px"
+            isBtnLoading={isBtnLoading}
+          />
         </form>
       </AuthWrapper>
     </div>

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { selectCurrentUser } from "./authSlice"
 
 const RequireAuth = () => {
-    const user = useSelector(selectCurrentUser)
+    const user = useSelector(selectCurrentUser);
     const location = useLocation()
 
     return (

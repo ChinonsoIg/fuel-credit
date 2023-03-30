@@ -1,17 +1,20 @@
-import { useState } from 'react';
-import styles from './../assets/styles/Navbar.module.css';
-import logo from '../assets/images/logo.png';
-import bell from '../assets/images/bell.png';
-import file from '../assets/images/file.png';
-import down_stroke from '../assets/images/down_stroke.png';
-import person_transparent from '../assets/images/person_transparent.png';
-import { Link, NavLink } from 'react-router-dom';
-import Button from './Button';
+import { useSelector } from "react-redux"
+import { selectCurrentUser } from "../features/auth/authSlice"
+
+import styles from "./../assets/styles/Navbar.module.css";
+import logo from "../assets/images/logo.png";
+import bell from "../assets/images/bell.png";
+import file from "../assets/images/file.png";
+import down_stroke from "../assets/images/down_stroke.png";
+import person_transparent from "../assets/images/person_transparent.png";
+import { Link, NavLink } from "react-router-dom";
+import Button from "./Button";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const user = useSelector(selectCurrentUser);
 
-  if (isLoggedIn) {
+
+  if (user) {
     return (
       <div className={styles.navbar_authed_user}>
         <p className={styles.authed_user_title}>Home</p>
@@ -31,7 +34,7 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <NavLink to="/" className={styles.logo}>
-        <img src={logo} alt='Logo' />
+        <img src={logo} alt="Logo" />
       </NavLink>
       <div className={styles.navbar_grid_container}>
         <div className={styles.navbar_grid_left}>

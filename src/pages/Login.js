@@ -27,17 +27,16 @@ const schema = yup.object({
 }).required();
 
 const LoginPage = () => {
-  const errRef = useRef()
   const [errMsg, setErrMsg] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isBtnLoading, setIsBtnLoading] = useState(false);
+  const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
   const fromLocation = location.state?.from?.pathname;
 
-
-  const [login, { isLoading }] = useLoginMutation()
-  const dispatch = useDispatch()
-
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [login] = useLoginMutation()
+  const dispatch = useDispatch();
 
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
@@ -45,17 +44,17 @@ const LoginPage = () => {
     setIsPasswordVisible(!isPasswordVisible)
   }
 
-
   const onSubmit = async (data) => {
+    setIsBtnLoading(true)
     const { mobileNumber, password } = data;
-    
+
     try {
       const userData = await login({ mobileNumber, password }).unwrap()
       dispatch(setCredentials({ ...userData, mobileNumber }))
-
-      navigate("/home")
+      setIsBtnLoading(false);
+      navigate("/home");
+    
     } catch (err) {
-      console.log("err: ", err);
       if (!err?.originalStatus) {
         setErrMsg("No Server Response");
       } else if (err.originalStatus === 400) {
@@ -66,20 +65,21 @@ const LoginPage = () => {
         setErrMsg("Login Failed");
       }
       errRef.current.focus();
+      setIsBtnLoading(false)
     }
 
   }
-
 
   useEffect(() => {
     setErrMsg("")
   }, [])
 
+
   return (
     <div>
       <Navbar />
       <AuthWrapper>
-      <p ref={errRef} style={{ color: "red" }} aria-live="assertive">{errMsg}</p>
+        <p ref={errRef} style={{ color: "red" }} aria-live="assertive">{errMsg}</p>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
           <div className={styles.login_form_icon_and_title}>
             {fromLocation === "/register" && <>
@@ -97,10 +97,10 @@ const LoginPage = () => {
             </>
             }
           </div>
-          {fromLocation && <p className={styles.registration_complete}>
+          {fromLocation === "/register" && <p className={styles.registration_complete}>
             Your registration is complete. Log in below to start enjoying easier and faster fuel purchases.
           </p>}
-          {fromLocation && <p className={styles.login_post_registration}>Log in</p>}
+          {fromLocation === "/register" && <p className={styles.login_post_registration}>Log in</p>}
           <div className={styles.login_form_input_container}>
             <FormInput
               htmlFor="mobileNumber"
@@ -144,7 +144,14 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
-          <Button title="Log in" variant="solid" height="55px" />
+          <Button
+            title={isBtnLoading ? "Logging in..." : "Log in"}
+            variant="solid"
+            height="55px"
+            isBtnLoading={isBtnLoading}
+          />
+
+
           {fromLocation === "/register" && <p className={styles.forgot_password_post_registration}>Forgot password?</p>}
           {fromLocation !== "/register" && <p className={styles.if_new_user}>New user? <span className="text_primary_color">Create account</span></p>}
         </form>

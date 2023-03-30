@@ -1,20 +1,17 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import styles from '../../assets/styles/Sidebar.module.css';
-import logo from '../../assets/images/logo.png';
-import customer_support from '../../assets/images/customer_support.png';
-import { navItems } from '../../utils/arrayItems';
+import { Link, useLocation } from "react-router-dom";
+import styles from "../../assets/styles/Sidebar.module.css";
+import logo from "../../assets/images/logo.png";
+import customer_support from "../../assets/images/customer_support.png";
+import { navItems } from "../../utils/arrayItems";
 
 const Sidebar = () => {
   const location = useLocation();
   const pathName = location.pathname;
-  console.log('loc: ', pathName)
-
 
   return (
     <>
       <div className={styles.logo_container}>
-        <img src={logo} alt='Logo' style={{ filter: "filter: invert(100%)" }} />
+        <img src={logo} alt="Logo" />
       </div>
       <nav className={styles.nav_items}>
         <ul>
@@ -24,7 +21,7 @@ const Sidebar = () => {
             return (
               <li key={id}>
                 <Link to={routeMatcher} className={`${styles.link} ${pathName === routeMatcher ? styles.active : styles.inactive}`}>
-                  <img src={image} />
+                  <img src={image} alt={title} />
                   <span>{title}</span>
                 </Link>
               </li>

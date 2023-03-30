@@ -1,6 +1,5 @@
-import React from 'react'
-import Navbar from '../Navbar';
-import Sidebar from './Sidebar';
+import Navbar from "../Navbar";
+import Sidebar from "./Sidebar";
 import styles from "../../assets/styles/Layout.module.css";
 
 const AuthLayout = ({ children }) => {

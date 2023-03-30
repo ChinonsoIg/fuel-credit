@@ -1,4 +1,4 @@
-import "./App.css";
+import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -14,11 +14,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route>
+            {/* Public routes */}
             <Route index element={<Landing />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="*" element={<ErrorBoundary />} />
           </Route>
 
+          {/* Private routes */}
           <Route element={<RequireAuth />} >
             <Route path="home" element={<Dashboard />} />
             <Route path="*" element={<ErrorBoundary />} />

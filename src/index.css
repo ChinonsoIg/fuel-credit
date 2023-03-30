@@ -19,14 +19,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--white);
-  /* border: 1px solid red; */
   max-width: 1440px;
-  /* font-size: 16px; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  margin: 0 auto;
 }
 
 .text_primary_color {

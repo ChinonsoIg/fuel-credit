@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: "http://dev.myfuelcredit.com/api/v1",
+    baseUrl: API_URL,
 
 })
 
