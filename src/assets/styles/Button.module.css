@@ -4,9 +4,10 @@
   font-size: 16px;
   line-height: 20px;
   border-radius: 10px;
+  height: 55px;
 
   /* check if this width will work in all cases */
-  width: 100%; 
+  width: 100%;
 }
 
 .btn_solid {
@@ -24,3 +25,55 @@
 .btn:hover {
   cursor: pointer;
 }
+
+
+
+/* For Link button */
+.btn_link {
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 10px;
+  height: 45px;
+
+  /* check if this width will work in all cases */
+  width: 100%;
+}
+
+.btn_link_solid {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+}
+
+.btn_link_transparent {
+  background-color: var(--white);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+
+/* // Small devices (landscape phones, less than 768px) */
+@media screen and (max-width: 768px) {
+  .btn {
+    height: 45px;
+  }
+
+  .btn_link {
+    height: 40px;
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+}
+
+
+
+/* // X-Small devices (portrait phones, less than 576px) */
+/* @media (max-width: 575.98px) {  } */

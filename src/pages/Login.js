@@ -16,7 +16,7 @@ import styles from "../assets/styles/Auth.module.css";
 import verification_successful from "../assets/images/verification_successful.png";
 import login_logo from "../assets/images/login_logo.png";
 import FormInput from "../components/FormInput";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 
 const schema = yup.object({
   mobileNumber: yup.string()

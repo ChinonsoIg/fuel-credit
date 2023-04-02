@@ -4,7 +4,7 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Layout from '../components/layout/Layout'
 import { dashboardGrid } from '../utils/arrayItems'
 import styles from "../assets/styles/Dashboard.module.css";
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 import HorizontalLine from "../components/HorizontalLine";
 
 

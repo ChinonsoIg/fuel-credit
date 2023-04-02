@@ -127,11 +127,126 @@
     color: var(--dark);
   }
   
-  .auth-container .form_input_container {
+  .auth_container .form_input_container {
     margin-top: 40px;
     width: 100%;
     display: grid;
     gap: 30px;
   }
   
+}
+
+
+
+/* // Small devices (landscape phones, less than 768px) */
+@media screen and (max-width: 768px) {
+  .auth_container {
+    width: 100%;
+    /* border: 2px solid brown; */
+  }
+  
+  .auth_container .form_icon_and_title {
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .auth_container .form_icon_and_title img {
+    width: 30px;
+  }
+  
+  .auth_container .form_title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .auth_container .not_an_individual {
+    padding: 0 10px;
+  }
+  
+  .auth_container .form_input_container {
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  .auth_container .password_container {
+    position: relative;
+    /* border: 1px solid red; */
+  }
+  
+  .auth_container .password_container .password_toggler {
+    position: absolute;
+    top: 35px;
+    right: 14px;
+  }
+  
+  .auth_container .terms_and_policy {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 0 10px;
+  }
+
+  .auth_container .btn_wrapper {
+    padding: 0 10px;
+  }
+  
+  
+  
+  /* FOR LOGIN PAGE */
+  .login_form_icon_and_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* border: 1px solid red; */
+  }
+  
+  .registration_complete {
+    margin: 32px auto 70px;
+    text-align: center;
+    color: var(--gray);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+  }
+  
+  .login_post_registration {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 36px;
+    color: var(--dark);
+    text-align: center;
+  }
+  
+  .login_form_input_container {
+    margin-top: 40px;
+    width: 100%;
+    display: grid;
+    gap: 30px;
+  }
+  
+  .login_form_input_container {
+    margin-bottom: 60px;
+  }
+  
+  .forgot_password_post_registration {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 30px;
+  }
+  
+  .if_new_user {
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--gray);
+    margin-top: 30px;
+  }
+
 }

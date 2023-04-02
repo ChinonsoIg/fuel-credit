@@ -13,7 +13,7 @@ import firebase from "../firebase";
 import AuthWrapper from "../components/AuthWrapper";
 import Navbar from "../components/Navbar";
 import FormInput from "../components/FormInput";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -73,8 +73,8 @@ const Register = () => {
       const response = await axios.post(`${API_URL}/register`, data);
 
       if (response.status === 201) {
-          handleOTP(data.mobileNumber);
-          setIsBtnLoading(false)
+        handleOTP(data.mobileNumber);
+        setIsBtnLoading(false)
 
       } else {
         setErrMsg("Registration Failed");
@@ -115,12 +115,17 @@ const Register = () => {
       <span id="recaptcha-container"></span>
       <AuthWrapper>
         <p ref={errRef} style={{ color: "red" }} aria-live="assertive">{errMsg}</p>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={styles.auth_container} >
           <div className={styles.form_icon_and_title}>
             <img src={person} alt="person icon" />
             <span className={styles.form_title}>Individual/Family</span>
           </div>
-          <p className={styles.not_an_individual}>Not an Individual? <span className="text_primary_color">Choose another account type</span></p>
+          <p className={styles.not_an_individual}>
+            Not an Individual? {" "}
+            <span className="text_primary_color">Choose another account type</span>
+          </p>
           <div className={styles.form_input_container}>
             <FormInput
               htmlFor="firstName"
@@ -195,12 +200,14 @@ const Register = () => {
             <span className="text_primary_color">{" "}Terms of Use</span>{" "} and {" "}
             <span className="text_primary_color">Privacy Policy</span>.
           </p>
-          <Button
-            title={isBtnLoading ? "Creating account..." : "Create my account"}
-            variant="solid"
-            height="55px"
-            isBtnLoading={isBtnLoading}
-          />
+          <div className={styles.btn_wrapper}>
+            <Button
+              title={isBtnLoading ? "Creating account..." : "Create my account"}
+              variant="solid"
+              // height="55px"
+              isBtnLoading={isBtnLoading}
+            />
+          </div>
         </form>
       </AuthWrapper>
     </div>

@@ -1,11 +1,10 @@
 import styles from "../assets/styles/Button.module.css"
 
-const Button = ({ title, variant, height, isBtnLoading }) => {
+const Button = ({ title, variant, isBtnLoading }) => {
   return (
     <button
       className={`${styles.btn} ${variant === "transparent" ? styles.btn_transparent : styles.btn_solid}`}
       style={{ 
-        height, 
         opacity: isBtnLoading ? "0.5" : "1" 
       }}
       >
@@ -14,4 +13,14 @@ const Button = ({ title, variant, height, isBtnLoading }) => {
   )
 }
 
-export default Button;
+const LinkButton = ({ title, variant }) => {
+  return (
+    <button
+      className={`${styles.btn_link} ${variant === "transparent" ? styles.btn_link_transparent : styles.btn_link_solid}`}
+      >
+      {title}
+    </button>
+  )
+}
+
+export { Button, LinkButton };

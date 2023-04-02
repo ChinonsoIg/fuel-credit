@@ -13,6 +13,9 @@
   --shadow: 0 4px 16px 0 rgba(0,0,0,0.2);
 }
 
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0 auto;
@@ -22,6 +25,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--white);
+
+  width: 100%;  /*delete */
+  /* border: 1px solid red; */
 }
 
 .App {
@@ -34,7 +40,7 @@ body {
 
 
 .auth_body {
-  max-width: 1440px;
+  width: 100%;
   padding: 0 50px;
 }
 
@@ -58,8 +64,69 @@ body {
 
 
 /* // Large devices (desktops, less than 1200px) */
-@media (max-width: 1024px) { 
+@media screen and (max-width: 1024px) { 
   .auth_body {
     padding: 0 30px;
+    
   }
 }
+
+
+
+/* // Medium devices (tablets, less than 992px) */
+@media screen and (max-width: 991.98px) {
+  .auth_body {
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  .auth_wrapper {
+    width: 100%;
+    margin: 25px auto;
+    padding: 20px 0;
+  }
+  
+  .auth_wrapper .close_form {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+  }
+
+  .auth_wrapper .close_form img {
+    width: 25px;
+  }
+}
+
+
+
+/* // Small devices (landscape phones, less than 768px) */
+@media screen and (max-width: 768px) { 
+  .auth_body {
+    padding: 0 20px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .auth_body .auth_wrapper {
+    margin: 20px auto;
+    border-radius: 10px;
+    /* border: 1px solid red; */
+  }
+  
+  .auth_wrapper .close_form {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+
+  .auth_wrapper .close_form img {
+    width: 15px;
+  }
+
+}
+
+
+
+/* // X-Small devices (portrait phones, less than 576px) */
+/* @media (max-width: 575.98px) {  } */

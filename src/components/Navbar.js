@@ -10,7 +10,7 @@ import bell from "../assets/images/bell.png";
 import file from "../assets/images/file.png";
 import down_stroke from "../assets/images/down_stroke.png";
 import person_transparent from "../assets/images/person_transparent.png";
-import Button from "./Button";
+import { Button, LinkButton } from "./Button";
 
 const Navbar = () => {
   const user = useSelector(selectCurrentUser);
@@ -82,8 +82,12 @@ const Navbar = () => {
             >
               FAQs
             </NavLink>
-            <Link to="/login"><Button title="Log In" variant="transparent" height="45px" /></Link>
-            <Link to="/register"><Button title="Create free account" variant="solid" height="45px" /></Link>
+            <Link to="/login">
+              <LinkButton title="Log In" variant="transparent" />
+            </Link>
+            <Link to="/register">
+              <LinkButton title="Create free account" variant="solid" />
+            </Link>
 
           </div>
         )
@@ -126,8 +130,8 @@ const Navbar = () => {
             FAQs
           </NavLink>
           <div className={styles.auth_btn_container}>
-            <Link to="/login"><Button title="Log In" variant="transparent" height="45px" /></Link>
-            <Link to="/register"><Button title="Create free account" variant="solid" height="45px" /></Link>
+            <Link to="/login"><LinkButton title="Log In" variant="transparent" /></Link>
+            <Link to="/register"><LinkButton title="Create free account" variant="solid" /></Link>
           </div>
         </div>
       </div>
