@@ -10,7 +10,7 @@
   --danger: #b30000;
   --bg-gray: #FAFAFA;
   --text-gray:  #8F928E;
-  --shadow: rgba(0,0,0,0.2);
+  --shadow: 0 4px 16px 0 rgba(0,0,0,0.2);
 }
 
 
