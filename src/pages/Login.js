@@ -34,7 +34,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   // const fromLocation = location.state?.from?.pathname;
-  const fromLocation = "/register"
+  const fromLocation = "/register l"
 
   const [login] = useLoginMutation()
   const dispatch = useDispatch();
@@ -121,6 +121,8 @@ const LoginPage = () => {
                     position: "absolute",
                     top: "0px",
                     right: "0px",
+                    fontSize: "14px",
+                    display: fromLocation !== "/register" ? "block" : "none"
                   }}
                 >
                   Forgot password?
