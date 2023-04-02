@@ -142,12 +142,12 @@
 @media screen and (max-width: 768px) {
   .auth_container {
     width: 100%;
+    /* padding: 0 10px; */
     /* border: 2px solid brown; */
   }
   
   .auth_container .form_icon_and_title {
     gap: 8px;
-    padding: 0 10px;
   }
 
   .auth_container .form_icon_and_title img {
@@ -158,17 +158,12 @@
     font-size: 20px;
     line-height: 26px;
   }
-
-  .auth_container .not_an_individual {
-    padding: 0 10px;
-  }
   
   .auth_container .form_input_container {
     margin-top: 20px;
     width: 100%;
     display: grid;
     gap: 20px;
-    padding: 10px;
   }
   
   .auth_container .password_container {
@@ -185,37 +180,31 @@
   .auth_container .terms_and_policy {
     font-size: 12px;
     line-height: 18px;
-    padding: 0 10px;
-  }
-
-  .auth_container .btn_wrapper {
-    padding: 0 10px;
-  }
-  
+  }  
   
   
   /* FOR LOGIN PAGE */
   .login_form_icon_and_title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    /* border: 1px solid red; */
+    gap: 10px;
+  }
+
+  .login_form_icon_and_title img {
+    width: 50px;
   }
   
   .registration_complete {
-    margin: 32px auto 70px;
+    margin: 24px auto 50px;
     text-align: center;
     color: var(--gray);
     font-weight: 400;
     font-size: 16px;
-    line-height: 26px;
+    line-height: 22px;
   }
   
   .login_post_registration {
     font-weight: 600;
-    font-size: 32px;
-    line-height: 36px;
+    font-size: 22px;
+    line-height: 28px;
     color: var(--dark);
     text-align: center;
   }

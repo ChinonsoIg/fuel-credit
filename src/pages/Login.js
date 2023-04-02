@@ -33,7 +33,8 @@ const LoginPage = () => {
   const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
-  const fromLocation = location.state?.from?.pathname;
+  // const fromLocation = location.state?.from?.pathname;
+  const fromLocation = "/register"
 
   const [login] = useLoginMutation()
   const dispatch = useDispatch();
