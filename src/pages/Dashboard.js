@@ -6,14 +6,24 @@ import { dashboardGrid } from '../utils/arrayItems'
 import styles from "../assets/styles/Dashboard.module.css";
 import { Button } from '../components/Button';
 import HorizontalLine from "../components/HorizontalLine";
+import { useGetUserQuery } from "../features/user/userApiSlice";
 
 
 const Dashboard = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false);
+  const { 
+    data: user ,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetUserQuery();
 
   const handleToggleBalance = () => {
     setIsBalanceVisible(!isBalanceVisible)
   }
+
+  console.log("user metric: ", user);
 
   return (
     <Layout>
