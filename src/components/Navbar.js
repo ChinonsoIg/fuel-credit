@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { selectCurrentUser } from "../features/auth/authSlice";
+import { logOut, selectCurrentUser } from "../features/auth/authSlice";
 import { AiOutlineBars } from "react-icons/ai";
 
 import styles from "./../assets/styles/Navbar.module.css";
@@ -10,14 +10,25 @@ import bell from "../assets/images/bell.png";
 import file from "../assets/images/file.png";
 import down_stroke from "../assets/images/down_stroke.png";
 import person_transparent from "../assets/images/person_transparent.png";
-import { Button, LinkButton } from "./Button";
+import { LinkButton } from "./Button";
 
 const Navbar = () => {
-  const user = useSelector(selectCurrentUser);
   const [showNavbar, setShowNavbar] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const user = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
 
   const handleNavbar = () => {
     setShowNavbar(!showNavbar);
+  }
+
+  const handleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  }
+
+  const handleLogOut = () => {
+    dispatch(logOut());
   }
 
   if (user) {
@@ -27,9 +38,16 @@ const Navbar = () => {
         <div className={styles.flex_container_authed_user}>
           <img src={file} alt="File icon" />
           <img src={bell} alt="Bell icon" />
-          <div>
+          <div onClick={handleDropdown} className={styles.authed_dropdown}>
             <img src={person_transparent} alt="Profile icon" />
-            <img src={down_stroke} alt="Down stroke icon" />
+            <img src={down_stroke} alt="Down stroke icon" className={styles.dropdown_icon} />
+            {
+              showDropdown && (
+                <div className={styles.dropdown_container}>
+                  <div onClick={handleLogOut}>Log out</div>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
