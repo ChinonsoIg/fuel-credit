@@ -10,7 +10,7 @@ import bell from "../assets/images/bell.png";
 import file from "../assets/images/file.png";
 import down_stroke from "../assets/images/down_stroke.png";
 import person_transparent from "../assets/images/person_transparent.png";
-import { LinkButton } from "./Button";
+import { Button, LinkButton } from "./Button";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -28,7 +28,7 @@ const Navbar = () => {
   }
 
   const handleLogOut = () => {
-    dispatch(logOut());
+    // dispatch(logOut());
   }
 
   if (user) {
@@ -38,13 +38,16 @@ const Navbar = () => {
         <div className={styles.flex_container_authed_user}>
           <img src={file} alt="File icon" />
           <img src={bell} alt="Bell icon" />
-          <div onClick={handleDropdown} className={styles.authed_dropdown}>
+          <div
+            onClick={handleDropdown}
+            className={styles.authed_dropdown}
+          >
             <img src={person_transparent} alt="Profile icon" />
             <img src={down_stroke} alt="Down stroke icon" className={styles.dropdown_icon} />
             {
               showDropdown && (
                 <div className={styles.dropdown_container}>
-                  <div onClick={handleLogOut}>Log out</div>
+                  <Button title="Logout" variant="solid" height="45px" />
                 </div>
               )
             }
