@@ -9,11 +9,19 @@
   max-width: 169px;
 }
 
-.nav_items {
+.sidebar_toggle_container {
+  display: none;
+}
+
+.sidebar_desktop {
+  display: block;
+}
+
+.sidebar_desktop .nav_items {
   width: 100%;
 }
 
-.nav_items ul {
+.sidebar_desktop .nav_items ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -23,7 +31,7 @@
   padding-bottom: 30px;
 }
 
-.nav_items ul li .link {
+.sidebar_desktop .nav_items ul li .link {
   display: flex;
   align-items: center;
   justify-self: flex-start;
@@ -35,34 +43,34 @@
   text-decoration: none;
 }
 
-.nav_items ul li .inactive {
+.sidebar_desktop .nav_items ul li .inactive {
   background-color: var(--white);
   color: var(--gray);
 
 }
 
-.nav_items ul li .active {
+.sidebar_desktop .nav_items ul li .active {
   background-color: var(--green-lit);
   color: var(--green-dark);
 }
 
-.nav_items ul li .link:hover {
+.sidebar_desktop .nav_items ul li .link:hover {
   background-color: var(--green-lit);
   color: var(--green-dark);
 }
 
 
 
-.horizontal_line {
+.sidebar_desktop .horizontal_line {
 margin: 0 40px 0 20px;
 border-top: 1px solid var(--border);
 }
 
-.customer_support_nav_items {
+.sidebar_desktop .customer_support_nav_items {
 padding-top: 30px;
 }
 
-.customer_support_nav_items .customer_support_link {
+.sidebar_desktop .customer_support_nav_items .customer_support_link {
   display: flex;
   align-items: center;
   justify-self: flex-start;
@@ -77,26 +85,152 @@ padding-top: 30px;
   line-height: 23px;
 }
 
-.customer_support_nav_items .inactive {
+.sidebar_desktop .customer_support_nav_items .inactive {
   background-color: var(--white);
   color: var(--gray);
 
 }
 
-.customer_support_nav_items .active {
+.sidebar_desktop .customer_support_nav_items .active {
   background-color: var(--green-lit);
   color: var(--green-dark);
 }
 
-.customer_support_nav_items .customer_support_link:hover {
+.sidebar_desktop .customer_support_nav_items .customer_support_link:hover {
   background-color: var(--green-lit);
   color: var(--green-dark);
+}
+
+.sidebar_mobile {
+  display: none;
 }
 
 
 
 
-/* // Large devices (desktops, less than 1024px) */
-@media screen and (max-width: 1024px) {
+/* // Large devices (desktops, less than 992px) */
+@media screen and (max-width: 992px) {
+  .sidebar_container {
+    position: relative;
+    width: 60px;
+    border-bottom: 1px solid var(--border);
+  }
 
+  .logo_container {
+    display: none;
+  }
+
+  .sidebar_toggle_container {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 20px;
+  }
+
+  .sidebar_desktop {
+    display: none;
+  }
+
+  
+  /* Mobile */
+  .sidebar_mobile {
+    display: block;
+    position: absolute;
+    top: 61px;
+    left: 0;
+    padding: 10px 0 20px;
+    z-index: 1;
+    box-shadow: var(--shadow);
+    background-color: var(--white);
+  }
+
+  .sidebar_mobile .nav_items {
+    width: 100%;
+  }
+  
+  .sidebar_mobile .nav_items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    padding-bottom: 20px;
+  }
+  
+  .sidebar_mobile .nav_items ul li .link {
+    display: flex;
+    align-items: center;
+    justify-self: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    height: 45px;
+    padding: 0 20px;
+    margin: 0 20px;
+    text-decoration: none;
+  }
+
+  .sidebar_mobile .nav_items ul li .link img {
+    width: 15px;
+  }
+  
+  .sidebar_mobile .nav_items ul li .inactive {
+    background-color: var(--white);
+    color: var(--gray);
+  
+  }
+  
+  .sidebar_mobile .nav_items ul li .active {
+    background-color: var(--green-lit);
+    color: var(--green-dark);
+  }
+  
+  .sidebar_mobile .nav_items ul li .link:hover {
+    background-color: var(--green-lit);
+    color: var(--green-dark);
+  }
+  
+  .sidebar_mobile .horizontal_line {
+  margin: 0 20px;
+  border-top: 1px solid var(--border);
+  }
+  
+  .sidebar_mobile .customer_support_nav_items {
+  padding-top: 30px;
+  }
+  
+  .sidebar_mobile .customer_support_nav_items .customer_support_link {
+    display: flex;
+    align-items: center;
+    justify-self: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    height: auto;
+    padding: 0 20px;
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+
+  .sidebar_mobile .customer_support_nav_items .customer_support_link img {
+    width: 15px;
+  }
+  
+  .sidebar_mobile .customer_support_nav_items .inactive {
+    background-color: var(--white);
+    color: var(--gray);
+  
+  }
+  
+  .sidebar_mobile .customer_support_nav_items .active {
+    background-color: var(--green-lit);
+    color: var(--green-dark);
+  }
+  
+  .sidebar_mobile .customer_support_nav_items .customer_support_link:hover {
+    background-color: var(--green-lit);
+    color: var(--green-dark);
+  }
 }

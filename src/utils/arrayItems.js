@@ -5,11 +5,6 @@ import beneficiaries from "../assets/images/beneficiaries.png";
 import filling_station from "../assets/images/filling_station.png";
 import stats from "../assets/images/stats.png";
 
-import dashboard_beneficiaries from "../assets/images/beneficiaries.png";
-import dashboard_filling_station from "../assets/images/filling_station.png";
-import fuel_purchases from "../assets/images/fuel_purchases.png";
-import total_purchases from "../assets/images/total_purchases.png";
-
 
 export const navItems = [
   {

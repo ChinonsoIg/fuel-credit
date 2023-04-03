@@ -154,7 +154,7 @@
 
 /* TODO: Make navebar to dropdown */
 /* // Medium devices (tablets, less than 992px) */
-@media screen and (max-width: 991.98px) {
+@media screen and (max-width: 992px) {
   .navbar {
     height: 61px;
     display: flex;
@@ -199,6 +199,51 @@
     text-decoration: none;
     color: var(--gray);
   }
+
+
+  /* NAVBAR FOR AUTHED USERS */
+  .navbar_authed_user {
+    height: 61px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+    margin-left: 60px;
+    background-color: var(--white);
+    position: sticky;
+    right: 0;
+    top: 0;
+  }
+
+  .navbar_authed_user .authed_user_title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .navbar_authed_user .flex_container_authed_user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+  }
+
+  .navbar_authed_user .flex_container_authed_user img {
+    width: 15px;
+  }
+
+  .navbar_authed_user .flex_container_authed_user>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .navbar_authed_user .flex_container_authed_user>div>img:last-child {
+    width: 7px;
+  }
+
 
 }
 

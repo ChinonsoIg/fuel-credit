@@ -36,3 +36,24 @@
   }
   
 }
+
+
+
+/* // Medium devices (tablets, less than 992px) */
+@media screen and (max-width: 992px) { 
+  .wrapper .sidebar {
+    width: 60px;
+    height: fit-content;
+    /* box-shadow: var(--shadow); */
+    background-color: var(--white);
+  }
+
+  .wrapper .main {
+    margin-left: 0;
+    /* border: 1px solid red; */
+  }
+  
+  .wrapper .main .contents {
+    padding: 0 20px;
+  }
+}
