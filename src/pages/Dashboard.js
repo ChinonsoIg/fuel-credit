@@ -7,42 +7,66 @@ import styles from "../assets/styles/Dashboard.module.css";
 import { Button } from '../components/Button';
 import HorizontalLine from "../components/HorizontalLine";
 import { useGetUserQuery } from "../features/user/userApiSlice";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../features/auth/authSlice";
+
+import dashboard_beneficiaries from "../assets/images/beneficiaries.png";
+import dashboard_filling_station from "../assets/images/filling_station.png";
+import fuel_purchases from "../assets/images/fuel_purchases.png";
+import total_purchases from "../assets/images/total_purchases.png";
 
 
 const Dashboard = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false);
-  const { 
-    data: user ,
+
+  const user = useSelector(selectCurrentUser);
+  let userId = user.id;
+  const {
+    data: userMetrics,
     isLoading,
     isSuccess,
     isError,
     error
-  } = useGetUserQuery();
+  } = useGetUserQuery(userId);
 
   const handleToggleBalance = () => {
     setIsBalanceVisible(!isBalanceVisible)
   }
 
-  console.log("user metric: ", user);
+  console.log("user metric: ", userMetrics);
+
 
   return (
     <Layout>
       <section className={styles.grid_container}>
-        {
-          dashboardGrid.map((item) => {
-            const { id, icon, name, value } = item;
-
-            return (
-              <div key={id} className={styles.grid_item}>
-                <img src={icon} alt={name} />
-                <p>
-                  <span className={styles.name}>{name}</span>
-                  <span className={styles.value}>{value}</span>
-                </p>
-              </div>
-            )
-          })
-        }
+        <div className={styles.grid_item}>
+          <img src={fuel_purchases} alt="Fuel purchases" />
+          <p>
+            <span className={styles.name}>Fuel purchases</span>
+            <span className={styles.value}>{userMetrics?.count_fuel}</span>
+          </p>
+        </div>
+        <div className={styles.grid_item}>
+          <img src={total_purchases} alt="Total purchases" />
+          <p>
+            <span className={styles.name}>Total purchases</span>
+            <span className={styles.value}>{userMetrics?.total_fuel}</span>
+          </p>
+        </div>
+        <div className={styles.grid_item}>
+          <img src={dashboard_beneficiaries} alt="Beneficiaries" />
+          <p>
+            <span className={styles.name}>Beneficiaries</span>
+            <span className={styles.value}>{userMetrics?.beneficiary}</span>
+          </p>
+        </div>
+        <div className={styles.grid_item}>
+          <img src={dashboard_filling_station} alt="Filling Stations" />
+          <p>
+            <span className={styles.name}>Filling Stations</span>
+            <span className={styles.value}>{userMetrics?.filling_station_count}</span>
+          </p>
+        </div>
       </section>
 
       <section className={styles.wallet_and_credit_wrapper}>
@@ -63,7 +87,7 @@ const Dashboard = () => {
                     }
                   </div>
                 </p>
-                <p className={styles.amount}>₦95,520.00</p>
+                <p className={styles.amount}>₦{userMetrics?.balance}</p>
               </div>
               <div>
                 <Button title="Fund Wallet" />
@@ -102,10 +126,10 @@ const Dashboard = () => {
                 }
               </div>
             </p>
-            <p className={styles.credit_balance}>-₦4,500</p>
+            <p className={styles.credit_balance}>₦{userMetrics?.credit}</p>
             <p className={styles.request_amount}>
               You can still request up to {" "}
-              <span>₦5,500</span>
+              <span>₦{userMetrics?.creditDetails?.limit}</span>
             </p>
             <HorizontalLine />
             <div className={styles.make_request}>
@@ -113,9 +137,9 @@ const Dashboard = () => {
                 <Button title="Request credit" />
               </div>
               <p className={styles.repayment_timeline}>
-              Repayment due in {" "}
-              <span>2 days</span>
-            </p>
+                Repayment due in {" "}
+                <span>{userMetrics?.creditDetails?.expire} days</span>
+              </p>
             </div>
           </div>
         </div>
