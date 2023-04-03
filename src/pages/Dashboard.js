@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-
-import Layout from '../components/layout/Layout'
-import { dashboardGrid } from '../utils/arrayItems'
-import styles from "../assets/styles/Dashboard.module.css";
-import { Button } from '../components/Button';
-import HorizontalLine from "../components/HorizontalLine";
-import { useGetUserQuery } from "../features/user/userApiSlice";
 import { useSelector } from "react-redux";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { useGetUserQuery } from "../features/user/userApiSlice";
 import { selectCurrentUser } from "../features/auth/authSlice";
+
+import Layout from "../components/layout/Layout"
+import styles from "../assets/styles/Dashboard.module.css";
+import { Button } from "../components/Button";
+import HorizontalLine from "../components/HorizontalLine";
 
 import dashboard_beneficiaries from "../assets/images/beneficiaries.png";
 import dashboard_filling_station from "../assets/images/filling_station.png";

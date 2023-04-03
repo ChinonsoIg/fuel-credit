@@ -48,32 +48,4 @@ export const navItems = [
     image: stats,
     routeMatcher: "stats"
   },
-]
-
-
-export const dashboardGrid = [
-  {
-    id: "1",
-    icon: fuel_purchases,
-    name: "Fuel purchases",
-    value: "24",
-  },
-  {
-    id: "2",
-    icon: total_purchases,
-    name: "Total purchases",
-    value: "₦155K",
-  },
-  {
-    id: "3",
-    icon: dashboard_beneficiaries,
-    name: "Beneficiaries",
-    value: "7",
-  },
-  {
-    id: "4",
-    icon: dashboard_filling_station,
-    name: "Filling Stations",
-    value: "5",
-  },
-]
+];
