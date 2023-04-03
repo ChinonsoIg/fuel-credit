@@ -112,7 +112,7 @@ const Dashboard = () => {
 
         <div className={styles.credit_wrapper}>
           <div className={styles.credit_header}>
-            <p className={styles.credit}>Wallet</p>
+            <p className={styles.credit}>Credit</p>
             <p className={styles.credit_details}>See details</p>
           </div>
           <div className={styles.credit_container}>

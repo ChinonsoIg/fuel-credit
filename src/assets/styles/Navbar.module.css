@@ -233,10 +233,6 @@
     width: 15px;
   }
 
-  /* .navbar_authed_user .flex_container_authed_user > div > img:last-child {
-    width: 7px;
-  } */
-
   .navbar_authed_user .flex_container_authed_user .authed_dropdown {
     display: flex;
     justify-content: space-between;
