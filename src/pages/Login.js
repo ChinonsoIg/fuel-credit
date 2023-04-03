@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -162,7 +162,10 @@ const LoginPage = () => {
 
 
           {fromLocation === "/register" && <p className={styles.forgot_password_post_registration}>Forgot password?</p>}
-          {fromLocation !== "/register" && <p className={styles.if_new_user}>New user? {" "}<span className="text_primary_color">Create account</span></p>}
+          {fromLocation !== "/register" && <p className={styles.if_new_user}>New user? {" "}<span className="text_primary_color">
+            <Link to="/register">Create account</Link>
+            </span>
+          </p>}
         </form>
       </AuthWrapper>
     </div>

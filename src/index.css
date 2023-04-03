@@ -27,8 +27,6 @@ body {
   background-color: var(--white);
 
   width: 100%;
-  /*delete */
-  /* border: 1px solid red; */
 }
 
 .App {
@@ -37,6 +35,11 @@ body {
 
 .text_primary_color {
   color: var(--primary-color);
+}
+
+.text_primary_color * {
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
 .button_solid {
@@ -93,7 +96,6 @@ body {
   line-height: 24px;
   color: var(--gray);
   position: relative;
-  /* border: 1px solid red; */
 }
 
 .option_select_label select {

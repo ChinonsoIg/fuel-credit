@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import axios from "axios";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useSelector } from "react-redux";
@@ -17,7 +18,6 @@ import AuthWrapper from "../components/AuthWrapper";
 import Navbar from "../components/Navbar";
 import FormInput from "../components/FormInput";
 import { Button } from "../components/Button";
-import axios from "axios";
 import { categories } from "../utils/arrayItems";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -73,39 +73,36 @@ const Register = () => {
   }
 
   const onSubmit = async (data) => {
-    // setIsBtnLoading(true);
-    // data.category = "Others";
+    setIsBtnLoading(true);
 
-    console.log('cata: ', data)
+    try {
+      const response = await axios.post(`${API_URL}/register`, data);
 
-    // try {
-    //   const response = await axios.post(`${API_URL}/register`, data);
+      if (response.status === 201) {
+        handleOTP(data.mobileNumber);
+        setIsBtnLoading(false)
 
-    //   if (response.status === 201) {
-    //     handleOTP(data.mobileNumber);
-    //     setIsBtnLoading(false)
+      } else {
+        setErrMsg("Registration Failed");
+      }
 
-    //   } else {
-    //     setErrMsg("Registration Failed");
-    //   }
+    } catch (error) {
+      if (error?.response?.data?.errors?.mobileNumber) {
+        setErrMsg(error?.response?.data?.errors?.mobileNumber?.[0]);
+      } else if (error?.response?.data?.errors?.firstName) {
+        setErrMsg(error?.response?.data?.errors?.firstName?.[0]);
+      } else if (error?.response?.data?.errors?.lastName) {
+        setErrMsg(error?.response?.data?.errors?.lastName?.[0]);
+      } else if (error?.response?.data?.errors?.email) {
+        setErrMsg(error?.response?.data?.errors?.email?.[0]);
+      } else if (error?.response?.data?.errors?.password) {
+        setErrMsg(error?.response?.data?.errors?.password?.[0]);
+      } else {
+        setErrMsg("Registration Failed");
+      }
 
-    // } catch (error) {
-    //   if (error?.response?.data?.errors?.mobileNumber) {
-    //     setErrMsg(error?.response?.data?.errors?.mobileNumber?.[0]);
-    //   } else if (error?.response?.data?.errors?.firstName) {
-    //     setErrMsg(error?.response?.data?.errors?.firstName?.[0]);
-    //   } else if (error?.response?.data?.errors?.lastName) {
-    //     setErrMsg(error?.response?.data?.errors?.lastName?.[0]);
-    //   } else if (error?.response?.data?.errors?.email) {
-    //     setErrMsg(error?.response?.data?.errors?.email?.[0]);
-    //   } else if (error?.response?.data?.errors?.password) {
-    //     setErrMsg(error?.response?.data?.errors?.password?.[0]);
-    //   } else {
-    //     setErrMsg("Registration Failed");
-    //   }
-
-    //   setIsBtnLoading(false);
-    // }
+      setIsBtnLoading(false);
+    }
 
   }
 
@@ -169,17 +166,6 @@ const Register = () => {
               register={register("mobileNumber")}
               errors={errors.mobileNumber?.message}
             />
-
-            {/* <select>
-              <option>Select your category</option>
-              {
-                categories.map((category) => (
-                  <option key={category.id} value={category.title}>
-                    {category.title}
-                  </option>
-                ))
-              }
-            </select> */}
 
             <label htmlFor="category" className="option_select_label">
             Category
@@ -256,7 +242,6 @@ const Register = () => {
             <Button
               title={isBtnLoading ? "Creating account..." : "Create my account"}
               variant="solid"
-              // height="55px"
               isBtnLoading={isBtnLoading}
             />
           </div>

@@ -36,9 +36,7 @@ const Dashboard = () => {
   const handleToggleCredit = () => {
     setIsCreditVisible(!isCreditVisible)
   }
-
-  console.log("user metric: ", userMetrics);
-
+  
 
   return (
     <Layout>
