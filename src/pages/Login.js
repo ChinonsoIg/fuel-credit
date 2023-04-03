@@ -6,6 +6,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { selectCurrentUser, setCredentials } from "../features/auth/authSlice";
 import { useLoginMutation } from "../features/auth/authApiSlice";
 
@@ -13,6 +16,7 @@ import AuthWrapper from "../components/AuthWrapper";
 import Navbar from "../components/Navbar";
 import FormInput from "../components/FormInput";
 import { Button } from "../components/Button";
+import { customToast } from "../components/Toast";
 import "../index.css";
 import styles from "../assets/styles/Auth.module.css";
 import verification_successful from "../assets/images/verification_successful.png";
@@ -27,7 +31,7 @@ const schema = yup.object({
 }).required();
 
 const LoginPage = () => {
-  const [errMsg, setErrMsg] = useState("");
+  // const [errMsg, setErrMsg] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isBtnLoading, setIsBtnLoading] = useState(false);
   const errRef = useRef();
@@ -56,25 +60,16 @@ const LoginPage = () => {
       navigate("/home");
     
     } catch (err) {
-      console.log("err: ", err)
-      if (!err?.originalStatus) {
-        setErrMsg("No Server Response");
-      } else if (err.originalStatus === 400) {
-        setErrMsg("Missing User ID or Password");
-      } else if (err.originalStatus === 401) {
-        setErrMsg("Unauthorized");
-      } else {
-        setErrMsg("Login Failed");
-      }
-      errRef.current.focus();
+      // console.log("err: ", err?.data?.message);
+      let errText = err?.data?.message ? err?.data?.message : "Login Failed, try again"
+      customToast("error", errText, "top-center");
+
       setIsBtnLoading(false)
     }
 
   }
 
   useEffect(() => {
-    setErrMsg("");
-
     if(user) {
       navigate("/home")
     }
@@ -85,7 +80,7 @@ const LoginPage = () => {
     <div>
       <Navbar />
       <AuthWrapper>
-        <p ref={errRef} style={{ color: "red" }} aria-live="assertive">{errMsg}</p>
+        <ToastContainer />
         <form 
           onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
           <div className={styles.login_form_icon_and_title}>

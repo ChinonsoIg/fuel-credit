@@ -1,18 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "../index.css";
 import styles from "../assets/styles/Auth.module.css";
 import person from "../assets/images/person.png";
 
 import { selectCurrentUser } from "../features/auth/authSlice";
+import { customToast } from "../components/Toast";
 import firebase from "../firebase";
 import AuthWrapper from "../components/AuthWrapper";
 import Navbar from "../components/Navbar";
@@ -37,10 +40,8 @@ const schema = yup.object({
 
 
 const Register = () => {
-  const [errMsg, setErrMsg] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isBtnLoading, setIsBtnLoading] = useState(false);
-  const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -67,7 +68,8 @@ const Register = () => {
         }, 5000);
 
       }).catch((err) => {
-        console.log("er: ", err)
+        console.log("er: ", err);
+        customToast("error", "Invalid or expired OTP", "top-center");
       })
     })
   }
@@ -83,22 +85,23 @@ const Register = () => {
         setIsBtnLoading(false)
 
       } else {
-        setErrMsg("Registration Failed");
+        customToast("error", "Registration failed", "top-center");
       }
 
     } catch (error) {
+
       if (error?.response?.data?.errors?.mobileNumber) {
-        setErrMsg(error?.response?.data?.errors?.mobileNumber?.[0]);
+        customToast("error", error?.response?.data?.errors?.mobileNumber?.[0], "top-center");
       } else if (error?.response?.data?.errors?.firstName) {
-        setErrMsg(error?.response?.data?.errors?.firstName?.[0]);
+        customToast("error", error?.response?.data?.errors?.firstName?.[0], "top-center");
       } else if (error?.response?.data?.errors?.lastName) {
-        setErrMsg(error?.response?.data?.errors?.lastName?.[0]);
+        customToast("error", error?.response?.data?.errors?.lastName?.[0], "top-center");
       } else if (error?.response?.data?.errors?.email) {
-        setErrMsg(error?.response?.data?.errors?.email?.[0]);
+        customToast("error", error?.response?.data?.errors?.email?.[0], "top-center");
       } else if (error?.response?.data?.errors?.password) {
-        setErrMsg(error?.response?.data?.errors?.password?.[0]);
+        customToast("error", error?.response?.data?.errors?.password?.[0], "top-center");
       } else {
-        setErrMsg("Registration Failed");
+        customToast("error", "Registration failed", "top-center");
       }
 
       setIsBtnLoading(false);
@@ -107,7 +110,6 @@ const Register = () => {
   }
 
   useEffect(() => {
-    setErrMsg("");
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier("recaptcha-container",
       {
         size: "invisible"
@@ -126,7 +128,7 @@ const Register = () => {
       <Navbar />
       <span id="recaptcha-container"></span>
       <AuthWrapper>
-        <p ref={errRef} style={{ color: "red" }} aria-live="assertive">{errMsg}</p>
+        <ToastContainer />
         <form
           onSubmit={handleSubmit(onSubmit)}
           className={styles.auth_container} >
