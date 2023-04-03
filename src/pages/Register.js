@@ -4,11 +4,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 import "../index.css";
 import styles from "../assets/styles/Auth.module.css";
 import person from "../assets/images/person.png";
 
+import { selectCurrentUser } from "../features/auth/authSlice";
 import firebase from "../firebase";
 import AuthWrapper from "../components/AuthWrapper";
 import Navbar from "../components/Navbar";
@@ -38,6 +40,8 @@ const Register = () => {
   const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const user = useSelector(selectCurrentUser);
 
   const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
@@ -106,7 +110,13 @@ const Register = () => {
       {
         size: "invisible"
       });
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if(user) {
+      navigate("/home")
+    }
+  }, [user])
 
 
   return (

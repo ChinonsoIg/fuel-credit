@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let refetchUser = localStorage.getItem("fuelCreditUser") !== null ? JSON.parse(localStorage.getItem("fuelCreditUser")) : {};
+let refetchUser = localStorage.getItem("fuelCreditUser") !== null ? JSON.parse(localStorage.getItem("fuelCreditUser")) : null;
 
 const authSlice = createSlice({
   name: "auth",

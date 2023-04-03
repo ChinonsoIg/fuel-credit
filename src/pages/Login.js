@@ -1,22 +1,22 @@
 import { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
-import { setCredentials } from "../features/auth/authSlice";
+import { selectCurrentUser, setCredentials } from "../features/auth/authSlice";
 import { useLoginMutation } from "../features/auth/authApiSlice";
 
 import AuthWrapper from "../components/AuthWrapper";
 import Navbar from "../components/Navbar";
+import FormInput from "../components/FormInput";
+import { Button } from "../components/Button";
 import "../index.css";
 import styles from "../assets/styles/Auth.module.css";
 import verification_successful from "../assets/images/verification_successful.png";
 import login_logo from "../assets/images/login_logo.png";
-import FormInput from "../components/FormInput";
-import { Button } from "../components/Button";
 
 const schema = yup.object({
   mobileNumber: yup.string()
@@ -33,9 +33,9 @@ const LoginPage = () => {
   const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
-  // const fromLocation = location.state?.from?.pathname;
-  const fromLocation = "/register l"
+  const fromLocation = location.state?.from?.pathname;
 
+  const user = useSelector(selectCurrentUser);
   const [login] = useLoginMutation()
   const dispatch = useDispatch();
 
@@ -73,8 +73,12 @@ const LoginPage = () => {
   }
 
   useEffect(() => {
-    setErrMsg("")
-  }, [])
+    setErrMsg("");
+
+    if(user) {
+      navigate("/home")
+    }
+  }, [user])
 
 
   return (
@@ -161,7 +165,9 @@ const LoginPage = () => {
         </form>
       </AuthWrapper>
     </div>
-  )
+  ) 
+
+
 }
 
 export default LoginPage;
