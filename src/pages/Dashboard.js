@@ -16,7 +16,8 @@ import total_purchases from "../assets/images/total_purchases.png";
 
 
 const Dashboard = () => {
-  const [isBalanceVisible, setIsBalanceVisible] = useState(false);
+  const [isWalletVisible, setIsWalletVisible] = useState(false);
+  const [isCreditVisible, setIsCreditVisible] = useState(false);
 
   const user = useSelector(selectCurrentUser);
   let userId = user.id;
@@ -28,8 +29,12 @@ const Dashboard = () => {
     error
   } = useGetUserQuery(userId);
 
-  const handleToggleBalance = () => {
-    setIsBalanceVisible(!isBalanceVisible)
+  const handleToggleWallet = () => {
+    setIsWalletVisible(!isWalletVisible)
+  }
+
+  const handleToggleCredit = () => {
+    setIsCreditVisible(!isCreditVisible)
   }
 
   console.log("user metric: ", userMetrics);
@@ -79,14 +84,16 @@ const Dashboard = () => {
               <div>
                 <div className={styles.toggle_balance}>
                   FuelCredit balance
-                  <div onClick={handleToggleBalance}>
-                    {isBalanceVisible
+                  <div onClick={handleToggleWallet}>
+                    {isWalletVisible
                       ? <AiFillEyeInvisible size={20} color="#8F928E" />
                       : <AiFillEye size={20} color="#8F928E" />
                     }
                   </div>
                 </div>
-                <p className={styles.amount}>₦{userMetrics?.balance}</p>
+                <p className={styles.amount}>
+                  {isWalletVisible ? `₦${userMetrics?.balance}` : "******"}
+                </p>
               </div>
               <div>
                 <Button title="Fund Wallet" />
@@ -118,14 +125,16 @@ const Dashboard = () => {
           <div className={styles.credit_container}>
             <div className={styles.toggle_credit}>
               FuelCredit “Quick” balance
-              <div onClick={handleToggleBalance}>
-                {isBalanceVisible
+              <div onClick={handleToggleCredit}>
+                {isCreditVisible
                   ? <AiFillEyeInvisible size={20} color="#8F928E" />
                   : <AiFillEye size={20} color="#8F928E" />
                 }
               </div>
             </div>
-            <p className={styles.credit_balance}>₦{userMetrics?.credit}</p>
+            <p className={styles.credit_balance}>
+              {isCreditVisible ? `₦${userMetrics?.credit}` : "******"}
+            </p>
             <p className={styles.request_amount}>
               You can still request up to {" "}
               <span>₦{userMetrics?.creditDetails?.limit}</span>

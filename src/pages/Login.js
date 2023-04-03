@@ -87,8 +87,7 @@ const LoginPage = () => {
       <AuthWrapper>
         <p ref={errRef} style={{ color: "red" }} aria-live="assertive">{errMsg}</p>
         <form 
-          onSubmit={handleSubmit(onSubmit)} 
-          className={styles.auth_container}>
+          onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
           <div className={styles.login_form_icon_and_title}>
             {fromLocation === "/register" && <>
               <img src={verification_successful} alt="verification icon" />
@@ -163,7 +162,7 @@ const LoginPage = () => {
 
 
           {fromLocation === "/register" && <p className={styles.forgot_password_post_registration}>Forgot password?</p>}
-          {fromLocation !== "/register" && <p className={styles.if_new_user}>New user? <span className="text_primary_color">Create account</span></p>}
+          {fromLocation !== "/register" && <p className={styles.if_new_user}>New user? {" "}<span className="text_primary_color">Create account</span></p>}
         </form>
       </AuthWrapper>
     </div>
