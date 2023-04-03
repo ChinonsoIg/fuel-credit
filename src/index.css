@@ -9,8 +9,8 @@
   --border: #E0E6DD;
   --danger: #b30000;
   --bg-gray: #FAFAFA;
-  --text-gray:  #8F928E;
-  --shadow: 0 4px 16px 0 rgba(0,0,0,0.2);
+  --text-gray: #8F928E;
+  --shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -26,7 +26,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--white);
 
-  width: 100%;  /*delete */
+  width: 100%;
+  /*delete */
   /* border: 1px solid red; */
 }
 
@@ -38,7 +39,20 @@ body {
   color: var(--primary-color);
 }
 
+.button_solid {
+  height: 45px;
+  background-color: var(--primary-color);
+  width: max-content;
+  padding: 0 30px;
+  border: none;
+  border-radius: 10px;
+  color: var(--white);
+  font-size: 16px;
+  cursor: pointer;
+}
 
+
+/* For Login and Register form background */
 .auth_body {
   width: 100%;
   padding: 0 50px;
@@ -58,7 +72,8 @@ body {
 .auth_wrapper .auth_main {
   padding: 0 10px 50px;
   width: 100%;
-  /* border: 1px solid red; */
+  display: grid;
+  place-items: center;
 }
 
 .auth_wrapper .auth_main .close_form {
@@ -90,7 +105,7 @@ body {
   background-color: var(--white);
   border: 1px solid var(--border);
   -webkit-appearance: none;
-    -moz-appearance: none;
+  -moz-appearance: none;
 }
 
 .option_select_label select:focus {
@@ -113,10 +128,10 @@ body {
 
 
 /* // Large devices (desktops, less than 1024px) */
-@media screen and (max-width: 1024px) { 
+@media screen and (max-width: 1024px) {
   .auth_body {
     padding: 0 30px;
-    
+
   }
 }
 
@@ -128,13 +143,13 @@ body {
     width: 100%;
     padding: 0 20px;
   }
-  
+
   .auth_body .auth_wrapper {
     width: 100%;
     margin: 25px auto;
     padding: 20px 0;
   }
-  
+
   .auth_wrapper .auth_main .close_form {
     position: absolute;
     right: 40px;
@@ -149,14 +164,14 @@ body {
 
 
 /* // Small devices (landscape phones, less than 768px) */
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
   .auth_body {
     padding: 20px;
     margin: 0;
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   .auth_body .auth_wrapper {
     margin: 20px auto;
     border-radius: 10px;
@@ -165,7 +180,7 @@ body {
   .auth_wrapper .auth_main {
     width: 100%;
   }
-  
+
   .auth_wrapper .auth_main .close_form {
     position: absolute;
     right: 15px;
@@ -178,11 +193,11 @@ body {
 
 
   /* For option selects */
-.option_select_label {
-  gap: 3px;
-  font-size: 12px;
-  line-height: 18px;
-}
+  .option_select_label {
+    gap: 3px;
+    font-size: 12px;
+    line-height: 18px;
+  }
 
   .option_select_label select {
     height: 45px;
@@ -199,7 +214,3 @@ body {
 
 }
 
-
-
-/* // X-Small devices (portrait phones, less than 576px) */
-/* @media (max-width: 575.98px) {  } */

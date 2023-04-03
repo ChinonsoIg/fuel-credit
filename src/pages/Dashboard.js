@@ -77,7 +77,7 @@ const Dashboard = () => {
           <div className={styles.wallet_container}>
             <div className={styles.balance}>
               <div>
-                <p className={styles.toggle_balance}>
+                <div className={styles.toggle_balance}>
                   FuelCredit balance
                   <div onClick={handleToggleBalance}>
                     {isBalanceVisible
@@ -85,7 +85,7 @@ const Dashboard = () => {
                       : <AiFillEye size={20} color="#8F928E" />
                     }
                   </div>
-                </p>
+                </div>
                 <p className={styles.amount}>₦{userMetrics?.balance}</p>
               </div>
               <div>
@@ -103,7 +103,7 @@ const Dashboard = () => {
                   <span className={styles.total}>Total Filling station</span>
                   <span className={styles.today}>Today 10:00AM </span>
                 </p>
-                <p className={styles.amt_filling_station}>-₦5,000</p>
+                <p className={styles.amt_filling_station}>₦0</p>
               </div>
             </div>
 
@@ -116,7 +116,7 @@ const Dashboard = () => {
             <p className={styles.credit_details}>See details</p>
           </div>
           <div className={styles.credit_container}>
-            <p className={styles.toggle_credit}>
+            <div className={styles.toggle_credit}>
               FuelCredit “Quick” balance
               <div onClick={handleToggleBalance}>
                 {isBalanceVisible
@@ -124,7 +124,7 @@ const Dashboard = () => {
                   : <AiFillEye size={20} color="#8F928E" />
                 }
               </div>
-            </p>
+            </div>
             <p className={styles.credit_balance}>₦{userMetrics?.credit}</p>
             <p className={styles.request_amount}>
               You can still request up to {" "}
