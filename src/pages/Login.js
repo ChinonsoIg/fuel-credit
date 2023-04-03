@@ -86,7 +86,9 @@ const LoginPage = () => {
       <Navbar />
       <AuthWrapper>
         <p ref={errRef} style={{ color: "red" }} aria-live="assertive">{errMsg}</p>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.auth_container}>
+        <form 
+          onSubmit={handleSubmit(onSubmit)} 
+          className={styles.auth_container}>
           <div className={styles.login_form_icon_and_title}>
             {fromLocation === "/register" && <>
               <img src={verification_successful} alt="verification icon" />

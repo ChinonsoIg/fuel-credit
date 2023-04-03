@@ -72,15 +72,15 @@
 }
 
 .login_form_input_container {
-  margin-top: 40px;
+  margin: 40px auto 60px;
   width: 100%;
   display: grid;
   gap: 30px;
 }
 
-.login_form_input_container {
+/* .login_form_input_container {
   margin-bottom: 60px;
-}
+} */
 
 .forgot_password_post_registration {
   text-align: center;
@@ -143,7 +143,6 @@
   .auth_container {
     width: 100%;
     /* padding: 0 10px; */
-    /* border: 2px solid brown; */
   }
   
   .auth_container .form_icon_and_title {
@@ -210,14 +209,10 @@
   }
   
   .login_form_input_container {
-    margin-top: 40px;
+    margin: 40px auto 60px;
     width: 100%;
     display: grid;
     gap: 30px;
-  }
-  
-  .login_form_input_container {
-    margin-bottom: 60px;
   }
   
   .forgot_password_post_registration {

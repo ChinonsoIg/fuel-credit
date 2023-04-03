@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
@@ -17,6 +18,7 @@ import Navbar from "../components/Navbar";
 import FormInput from "../components/FormInput";
 import { Button } from "../components/Button";
 import axios from "axios";
+import { categories } from "../utils/arrayItems";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -27,6 +29,7 @@ const schema = yup.object({
     .required("Phone number is required")
     .min(11, "Phone number must be 11 digits")
     .max(11, "Phone number must be 11 digits"),
+  category: yup.string().required("Category is required"),
   nin: yup.string().notRequired(),
   email: yup.string().email().required("Password is required"),
   password: yup.string().required("Password is required")
@@ -70,37 +73,39 @@ const Register = () => {
   }
 
   const onSubmit = async (data) => {
-    setIsBtnLoading(true);
-    data.category = "Others";
+    // setIsBtnLoading(true);
+    // data.category = "Others";
 
-    try {
-      const response = await axios.post(`${API_URL}/register`, data);
+    console.log('cata: ', data)
 
-      if (response.status === 201) {
-        handleOTP(data.mobileNumber);
-        setIsBtnLoading(false)
+    // try {
+    //   const response = await axios.post(`${API_URL}/register`, data);
 
-      } else {
-        setErrMsg("Registration Failed");
-      }
+    //   if (response.status === 201) {
+    //     handleOTP(data.mobileNumber);
+    //     setIsBtnLoading(false)
 
-    } catch (error) {
-      if (error?.response?.data?.errors?.mobileNumber) {
-        setErrMsg(error?.response?.data?.errors?.mobileNumber?.[0]);
-      } else if (error?.response?.data?.errors?.firstName) {
-        setErrMsg(error?.response?.data?.errors?.firstName?.[0]);
-      } else if (error?.response?.data?.errors?.lastName) {
-        setErrMsg(error?.response?.data?.errors?.lastName?.[0]);
-      } else if (error?.response?.data?.errors?.email) {
-        setErrMsg(error?.response?.data?.errors?.email?.[0]);
-      } else if (error?.response?.data?.errors?.password) {
-        setErrMsg(error?.response?.data?.errors?.password?.[0]);
-      } else {
-        setErrMsg("Registration Failed");
-      }
+    //   } else {
+    //     setErrMsg("Registration Failed");
+    //   }
 
-      setIsBtnLoading(false);
-    }
+    // } catch (error) {
+    //   if (error?.response?.data?.errors?.mobileNumber) {
+    //     setErrMsg(error?.response?.data?.errors?.mobileNumber?.[0]);
+    //   } else if (error?.response?.data?.errors?.firstName) {
+    //     setErrMsg(error?.response?.data?.errors?.firstName?.[0]);
+    //   } else if (error?.response?.data?.errors?.lastName) {
+    //     setErrMsg(error?.response?.data?.errors?.lastName?.[0]);
+    //   } else if (error?.response?.data?.errors?.email) {
+    //     setErrMsg(error?.response?.data?.errors?.email?.[0]);
+    //   } else if (error?.response?.data?.errors?.password) {
+    //     setErrMsg(error?.response?.data?.errors?.password?.[0]);
+    //   } else {
+    //     setErrMsg("Registration Failed");
+    //   }
+
+    //   setIsBtnLoading(false);
+    // }
 
   }
 
@@ -164,6 +169,43 @@ const Register = () => {
               register={register("mobileNumber")}
               errors={errors.mobileNumber?.message}
             />
+
+            {/* <select>
+              <option>Select your category</option>
+              {
+                categories.map((category) => (
+                  <option key={category.id} value={category.title}>
+                    {category.title}
+                  </option>
+                ))
+              }
+            </select> */}
+
+            <label htmlFor="category" className="option_select_label">
+            Category
+            <select
+              name="category"
+              {...register("category")}
+              style={{ margin: "0" }}
+            >
+              <option value="">Select your category</option>
+              {
+                categories?.map((category) => {
+                  const { id, title } = category;
+                  return (
+                    <option key={id} value={title}>
+                      {title}
+                    </option>
+                  )
+                })
+              }
+            </select>
+            <MdOutlineKeyboardArrowDown size={18} color="#31581C" className="items_per_page_icon" />
+            <p className="option_select_errors">
+              {errors.category?.message}
+            </p>
+          </label>
+
             <FormInput
               htmlFor="nin"
               title="NIN (National Identification Number)"

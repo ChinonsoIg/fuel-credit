@@ -6,10 +6,12 @@ const AuthWrapper = ({ children }) => {
   return (
     <div className="auth_body">
       <div className="auth_wrapper">
-        <Link to="/" className="close_form">
-          <img src={close_icon} alt="close form" />
-        </Link>
-        {children}
+        <div className="auth_main">
+          <Link to="/" className="close_form">
+            <img src={close_icon} alt="close form" />
+          </Link>
+          {children}
+        </div>
       </div>
     </div>
   );

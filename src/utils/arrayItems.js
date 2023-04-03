@@ -44,3 +44,39 @@ export const navItems = [
     routeMatcher: "stats"
   },
 ];
+
+
+export const categories = [
+  {
+    id: "1",
+    title: "Bike - Gokada"
+  },
+  {
+    id: "2",
+    title: "Bike - Kwik"
+  },
+  {
+    id: "3",
+    title: "Bike - Max"
+  },
+  {
+    id: "4",
+    title: "Bike - Other"
+  },
+  {
+    id: "5",
+    title: "Taxi - Uber"
+  },
+  {
+    id: "6",
+    title: "Taxi - Bolt"
+  },
+  {
+    id: "7",
+    title: "Salary Earner"
+  },
+  {
+    id: "8",
+    title: "Others"
+  }
+];
