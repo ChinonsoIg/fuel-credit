@@ -82,8 +82,8 @@ const Register = () => {
 
       if (response.status === 201) {
         handleOTP(data.mobileNumber);
-        setIsBtnLoading(false)
-
+        setIsBtnLoading(false);
+        customToast("success", `Hold on! You'll receive an OTP shortly to confirm your mobile number`, "top-center");
       } else {
         customToast("error", "Registration failed", "top-center");
       }
