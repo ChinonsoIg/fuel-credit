@@ -34,7 +34,7 @@ const schema = yup.object({
     .max(11, "Phone number must be 11 digits"),
   category: yup.string().required("Category is required"),
   nin: yup.string().notRequired(),
-  email: yup.string().email().required("Password is required"),
+  email: yup.string().email().required("Email is required"),
   password: yup.string().required("Password is required")
 }).required();
 
@@ -78,7 +78,7 @@ const Register = () => {
     setIsBtnLoading(true);
 
     try {
-      const response = await axios.post(`${API_URL}/register`, data);
+      const response = await axios.post(`${API_URL}/register`, data)
 
       if (response.status === 201) {
         handleOTP(data.mobileNumber);
@@ -108,6 +108,8 @@ const Register = () => {
     }
 
   }
+
+  console.log("api url", API_URL)
 
   useEffect(() => {
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier("recaptcha-container",

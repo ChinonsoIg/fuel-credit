@@ -16,7 +16,7 @@ const Landing = () => {
   }, [user])
 
 
-  if (loading) return null;
+  // if (loading) return null;
 
   return (
     <div>
